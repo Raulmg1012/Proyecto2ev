@@ -1,0 +1,226 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #2c3e50;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Transiciones para los paneles principales */
+#panelBienvenida,
+#panelCrear,
+#listaArchivos,
+#panelFormularioArchivo,
+#listaPlantillas {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Regla para elementos ocultos */
+[hidden] {
+    display: none !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    height: 0;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Encabezados y texto */
+h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #4a5568;
+}
+
+/* Paneles y contenedores */
+#panelBienvenida,
+#panelCrear,
+#panelFormularioArchivo,
+#listaPlantillas {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Botones principales */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#btnComenzar {
+    background-color: #27ae60;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    display: block;
+    margin: 2rem auto;
+}
+
+#btnCrearArchivo {
+    background-color: #2980b9;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Formularios y campos de entrada */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    height: 200px;
+    resize: vertical;
+}
+
+label {
+    font-weight: 600;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Lista de archivos */
+#listaArchivos {
+    display: grid;
+    gap: 1rem;
+}
+
+#listaArchivos button {
+    background-color: white;
+    color: #2c3e50;
+    border: 2px solid #e2e8f0;
+    text-align: left;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#listaArchivos button:hover {
+    border-color: #3498db;
+    transform: none;
+}
+
+.btnEliminar {
+    background-color: #e74c3c !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.editable {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 100px;
+    cursor: text;
+}
+
+/* Botones de exportación */
+#exportarPDF {
+    background-color: #e74c3c;
+}
+
+#exportarTXT {
+    background-color: #27ae60;
+}
+
+/* Plantillas */
+#listaPlantillas {
+    margin-top: 1rem;
+}
+
+#selectPlantilla {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Botón Volver */
+#btnVolver {
+    background-color: #95a5a6;
+    margin-top: 1rem;
+}
+
+/* Efectos hover específicos */
+#btnComenzar:hover {
+    background-color: #219a52;
+}
+
+#btnCrearArchivo:hover {
+    background-color: #2471a3;
+}
+
+.btnEliminar:hover {
+    background-color: #c0392b !important;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #panelBienvenida,
+    #panelCrear,
+    #panelFormularioArchivo {
+        padding: 1.5rem;
+    }
+
+    button {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Mejoras de accesibilidad */
+input:focus,
+textarea:focus,
+button:focus {
+    outline: 3px solid #3498db55;
+    outline-offset: 2px;
+}
