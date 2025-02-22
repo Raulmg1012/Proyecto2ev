@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aplicación de archivos</title>
+    <link rel="icon" href="./archivo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Panel de Bienvenida -->
     <div id="panelBienvenida">
-        <h1>Create pdf</h1>
-        <p>Esta página web consiste en un creador de pdfs o archivos txt con la información introducida en los campos</p>
+        <h1>Creador y almacenamiento de archivos</h1>
+        <p>Esta página web consiste en un creador de pdfs o archivos txt con la información introducida en los campos. También consiste en un almacenamiento de archivos.</p>
         <button id="btnComenzar">Comenzar</button>
     </div>
+    <!-- Panel para Crear Archivos -->
     <div id="panelCrear" hidden>
         <button id="btnCrearArchivo">Crear un nuevo archivo</button>
     </div>
     <ul id="listaArchivos" hidden></ul>
+    <!-- Formulario para Crear o Editar Archivos -->
     <div id="panelFormularioArchivo" hidden>
         <button id="plantillas">Mostrar Plantillas</button>
         <div id="listaPlantillas" >
@@ -41,7 +45,7 @@
         <input type="text" id="nombre">
         <p><label for="titulo">Introduce el título del pdf</label></p>
         <input type="text" id="titulo">
-        <p><label for="descripcion">Introduce el texto</label></p>
+        <p><label for="descripcion">Introduce la descripcion</label></p>
         <button id="btnBold">Negrita</button>
         <button id="btnUnderline">Subrayado</button>
         <button id="btnItalic">Cursiva</button>
@@ -52,6 +56,7 @@
         <button id="btnVolver">Volver</button>
     </div>
 
+    <!-- Bibliotecas necesarias para el código -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

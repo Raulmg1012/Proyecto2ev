@@ -1,3 +1,4 @@
+//Constantes
 const { jsPDF } = window.jspdf
 const panelBienvenida = document.getElementById("panelBienvenida")
 const btnComenzar = document.getElementById("btnComenzar")
@@ -20,6 +21,7 @@ const btnUnderline = document.getElementById("btnUnderline")
 const btnItalic = document.getElementById("btnItalic")
 let arrayArchivos = JSON.parse(localStorage.getItem("arrayArchivos")) || []
 let archivoEdicion = null
+//Texto de las plantillas
 const plantillasTexto = {
     curriculum: `Nombre: [Tu nombre aquí]
 Email: [Tu correo aquí]
@@ -162,7 +164,7 @@ Atentamente,
 }
 
 
-
+//Al iniciar la página carga los datos del localStorage
 document.addEventListener("DOMContentLoaded",(e)=>{
     e.preventDefault()
     listaArchivos.innerHTML = ""
@@ -182,6 +184,7 @@ document.addEventListener("DOMContentLoaded",(e)=>{
 
 })
 
+//Acción del botón comenzar que muestra los demás paneles
 btnComenzar.addEventListener("click",(e)=>{
     e.preventDefault()
     panelCrear.hidden = false
@@ -189,6 +192,7 @@ btnComenzar.addEventListener("click",(e)=>{
     listaArchivos.hidden = false
 })
 
+//Acción del botón volver que esconde el formulario
 btnVolver.addEventListener("click",()=>{
     listaArchivos.hidden = false
     btnCrearArchivo.hidden = false
@@ -196,6 +200,7 @@ btnVolver.addEventListener("click",()=>{
     listaPlantillas.hidden = true
 })
 
+//Acción del botón crear nuevo archivo que muestra el formulario
 btnCrearArchivo.addEventListener("click",(e)=>{
     e.preventDefault()
     listaArchivos.hidden = true
@@ -212,6 +217,7 @@ btnCrearArchivo.addEventListener("click",(e)=>{
     archivoEdicion = null
 })
 
+//Botón que crea el archivo y lo guarda en el localStorage
 crearArchivo.addEventListener("click",(e)=>{
     e.preventDefault()
     
@@ -253,16 +259,19 @@ crearArchivo.addEventListener("click",(e)=>{
 
 })
 
+//Botón para crear el PDF
 exportarPDF.addEventListener("click",(e)=>{
     e.preventDefault()
     crearPDF()
 })
 
+//Botón para crear el TXT
 exportarTXT.addEventListener("click",(e)=>{
     e.preventDefault()
     crearTXT()
 })
 
+//Botón que muestra el select de las plantillas
 plantillas.addEventListener("click",(e)=>{
     e.preventDefault()
     listaPlantillas.hidden = false
@@ -272,21 +281,23 @@ plantillas.addEventListener("click",(e)=>{
    selectPlantilla.style.display = "block"
 })
 
+//Botón que escribe la plantilla elegida
 selectPlantilla.addEventListener("change", (e) => {
     const plantillaSeleccionada = e.target.value;
     if (plantillaSeleccionada in plantillasTexto) {
-        // Reemplaza los saltos de línea con <br> para que se conserven los párrafos
+        //Reemplaza los saltos de línea con <br> para que se conserven los párrafos
         descripcion.innerHTML = plantillasTexto[plantillaSeleccionada].replace(/\n/g, "<br>");
     } else {
         descripcion.innerHTML = "";
     }
 });
 
+//Botones de negrita, cursiva y subrayado
 btnBold.addEventListener("click",()=> formatText("bold"))
 btnUnderline.addEventListener("click",()=> formatText("underline"))
 btnItalic.addEventListener("click",()=> formatText("italic"))
 
-
+//Función que sirve para cargar un archivo
 function cargarArchivo(archivo,i) {
     nombre.value = archivo.nombre
     titulo.value = archivo.titulo
@@ -302,6 +313,7 @@ function cargarArchivo(archivo,i) {
     plantillas.textContent = "Mostrar Plantillas"
 }
 
+//Función que sirve para eliminar un archivo
 function eliminarArchivo(i) {
     const confirmar = confirm("¿Seguro que quieres eliminar este archivo?")
     if(!confirmar) {
@@ -325,6 +337,7 @@ function eliminarArchivo(i) {
     })
 }
 
+//Función que sirve para crear y editar la forma del PDF
 function crearPDF() {
     const doc = new jsPDF();
     doc.setFont("helvetica", "bold");
@@ -335,7 +348,6 @@ function crearPDF() {
     doc.text(`Nombre: ${nombre.value}`, 10, 30);
     doc.text(`Título: ${titulo.value}`, 10, 40);
     doc.text("Descripción:", 10, 50);
-
     doc.html(descripcion, {
         x: 10,
         y: 60,
@@ -348,6 +360,7 @@ function crearPDF() {
     });
 }
 
+//Función que sirve para crear y editar la forma del TXT
 function crearTXT() {
     const contenidoDescripcion = descripcion.innerText
     const contenido = `Nombre: ${nombre.value}\nTítulo: ${titulo.value}\nDescripción:\n${contenidoDescripcion}`;
@@ -360,6 +373,7 @@ function crearTXT() {
     URL.revokeObjectURL(link.href)
 }
 
+//Función que sirve para escribir en negrita, cursiva o subrayado
 function formatText(command) {
     document.execCommand(command,false,null)
 }
